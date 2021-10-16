@@ -1,0 +1,195 @@
+//<МИКСИНЫ>
+@mixin font($font_name, $file_name, $weight, $style) {
+	@font-face {
+		font-family: $font_name;
+		font-display: swap;
+		src: url("../fonts/#{$file_name}.woff") format("woff"), url("../fonts/#{$file_name}.woff2") format("woff2");
+		font-weight: #{$weight};
+		font-style: #{$style};
+	}
+}
+@mixin cnt($h) {
+	display: flex;
+	flex-direction: column;
+	height: $h;
+	text-align: center;
+	align-items: stretch;
+	justify-content: center;
+}
+@mixin tr($x, $y, $z) {
+	transform: translate3d($x, $y, $z);
+}
+@mixin flexbox() {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	font-size: 0;
+}
+@mixin flexorder($val) {
+	-webkit-box-ordinal-group: $val;
+	-moz-box-ordinal-group: $val;
+	-ms-flex-order: $val;
+	-webkit-order: $val;
+	order: $val;
+}
+//</МИКСИНЫ>
+//<ШРИФТЫ>
+//<Подключаем шрифты>
+//font-display:swrap;
+//</Подключаем шрифты>
+
+//<Шрифт по умолачнию>
+$fontfamily: "";
+//</Шрифт по умолачнию>
+//</ШРИФТЫ>
+
+//<ПЕРЕМЕННЫЕ>
+$minwidth: 320px;
+$mw: 1170;
+$md1: $mw + 12;
+$md2: 992.98;
+$md3: 767.98;
+$md4: 479.98;
+//</ПЕРЕМЕННЫЕ>
+
+//<ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>
+* {
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+}
+*,
+*:before,
+*:after {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+:focus,
+:active {
+	outline: none;
+}
+a:focus,
+a:active {
+	outline: none;
+}
+nav,
+section,
+footer,
+header,
+aside {
+	display: block;
+}
+html,
+body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	min-width: $minwidth;
+	position: relative;
+	width: 100%;
+	color: #000;
+}
+body {
+	font-size: 100%;
+	line-height: 1;
+	font-size: 14px;
+	font-family: $fontfamily;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	&.lock {
+		overflow: hidden;
+		@media (max-width: $md3+px) {
+			width: 100%;
+			position: fixed;
+			overflow: hidden;
+		}
+	}
+}
+input,
+button,
+textarea {
+	font-family: $fontfamily;
+}
+input::-ms-clear {
+	display: none;
+}
+button {
+	cursor: pointer;
+}
+button::-moz-focus-inner {
+	padding: 0;
+	border: 0;
+}
+a,
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: none;
+}
+ul li {
+	list-style: none;
+}
+img {
+	vertical-align: top;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size: inherit;
+	font-weight: inherit;
+}
+//-webkit-overflow-scrolling: touch;
+//animation-play-state: paused !important;
+//</ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>
+
+//<ОБОЛОЧКА>
+.wrapper {
+	width: 100%;
+	min-height: 100%;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	//	&.loaded {
+	//	}
+}
+//</ОБОЛОЧКА>
+
+//<ОСНОВНАЯ СЕТКА>
+.container {
+	max-width: $mw + px;
+	margin: 0 auto;
+	width: 100%;
+	@media (max-width: $md1+px) {
+		max-width: 970px;
+	}
+	@media (max-width: $md2+px) {
+		max-width: 750px;
+	}
+	@media (max-width: $md3+px) {
+		max-width: none;
+		padding: 0 10px;
+	}
+}
+//</ОСНОВНАЯ СЕТКА>
+
+//<ПОДКЛЮЧЕНИЕ	ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>
+@import "_header.scss";
+@import "_footer.scss";
+@import "fonts.scss";
+//@import "slider.scss";
+//</ПОДКЛЮЧЕНИЕ	ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>
+.page {
+	flex: 1 1 auto;
+}
+//<ОСНОВНОЙ БЛОК>
+//================================================
+
+//</ОСНОВНОЙ БЛОК>
